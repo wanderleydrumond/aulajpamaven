@@ -1,9 +1,15 @@
 package dominio;
 
+import javax.persistence.*;
 import java.io.Serializable;
 
+@Entity
 public class Pessoa implements Serializable {
+    @Id
+    @Column(name = "id", nullable = false, unique = true) //opcional caso queira ter um nome diferente de coluna no banco de dados
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @Column(name = "nomeCompleto") // opcional, mudei o nome da coluna no banco de dados
     private String nome;
     private String email;
 
