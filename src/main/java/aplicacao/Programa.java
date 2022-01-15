@@ -22,5 +22,7 @@ public class Programa {
         entityManager.getTransaction().commit();
 
         System.out.println(pessoa1 + "\n"+ pessoa2 + "\n" + pessoa3 + "\n\nCadastrados com sucesso!");
+        entityManager.close();
+        entityManagerFactory.close();
     }
 }
