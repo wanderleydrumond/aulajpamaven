@@ -15,7 +15,7 @@ public class Programa {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
 
         inserirPessoas(entityManager);
-
+        pesquisarPessoa(entityManager);
         removerPessoa(entityManager);
 
         entityManager.close();
