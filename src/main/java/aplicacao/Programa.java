@@ -16,15 +16,24 @@ public class Programa {
 
         inserirPessoas(entityManager);
 
-        pesquisarPessoa(entityManager);
+        removerPessoa(entityManager);
 
         entityManager.close();
         entityManagerFactory.close();
     }
 
-    private static void pesquisarPessoa(@NotNull EntityManager entityManager) {
+    private static void removerPessoa(EntityManager entityManager) {
+        Pessoa pessoaASerRemovida = pesquisarPessoa(entityManager);
+        entityManager.getTransaction().begin();
+        entityManager.remove(pessoaASerRemovida);
+        entityManager.getTransaction().commit();
+        System.out.println(pessoaASerRemovida + "Removido do banco de dados");
+    }
+
+    private static Pessoa pesquisarPessoa(@NotNull EntityManager entityManager) {
         Pessoa pessoa = entityManager.find(Pessoa.class, 2);
         System.out.println(pessoa);
+        return pessoa;
     }
 
     private static void inserirPessoas(@NotNull EntityManager entityManager) {
