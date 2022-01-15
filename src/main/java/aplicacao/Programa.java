@@ -16,8 +16,15 @@ public class Programa {
 
         inserirPessoas(entityManager);
 
+        pesquisarPessoa(entityManager);
+
         entityManager.close();
         entityManagerFactory.close();
+    }
+
+    private static void pesquisarPessoa(@NotNull EntityManager entityManager) {
+        Pessoa pessoa = entityManager.find(Pessoa.class, 2);
+        System.out.println(pessoa);
     }
 
     private static void inserirPessoas(@NotNull EntityManager entityManager) {
